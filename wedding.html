@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Invitation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background:#FAF3E0;
+            color:#333;
+            overflow-x:hidden;
+        }
+
+        /* ---------------- HEADER ---------------- */
+        header {
+            position:fixed;
+            top:0; left:0;
+            width:100%;
+            background:rgba(255, 255, 255, 0.527);
+            backdrop-filter:blur(10px);
+            padding:15px 40px;
+            z-index:10;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h3 {
+            font-family:'Great Vibes', cursive;
+            font-size:32px;
+            color:#ec2366;
+        }
+
+        nav ul {
+            display:flex; gap:25px;
+            list-style:none;
+        }
+        nav a {
+            text-decoration:none;
+            color:#1a1919;
+            font-weight:500;
+            transition:0.3s;
+        }
+        nav a:hover { color:#B76E79; }
+
+        @media (max-width:768px) {
+            header { padding:12px 20px; flex-direction:column; gap:12px; }
+            header h3 { font-size:24px; }
+            nav ul { gap:15px; flex-wrap:wrap; justify-content:center; }
+            nav a { font-size:14px; }
+        }
+
+        /* ---------------- HERO ---------------- */
+        .hero {
+            height:100vh;
+            background:url('vsbackground.jpeg') center/cover fixed;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:20px;
+            margin-top:80px;
+            position:relative;
+        }
+
+        .hero::before {
+            content:'';
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background:rgba(255, 255, 255, 0.226);
+            backdrop-filter:blur(8px);
+            z-index:1;
+        }
+
+        .hero > * {
+            position:relative;
+            z-index:2;
+        }
+
+        .hero .names {
+            font-family:'Great Vibes', cursive;
+            font-size:70px;
+            color:#0d101b;
+            margin-bottom:10px;
+            text-shadow:2px 2px 8px rgba(174, 0, 255, 0.3);
+        }
+
+        .hero .tagline {
+            font-size:20px;
+            letter-spacing:1px;
+            color:#141414;
+            margin-bottom:20px;
+            text-shadow:0 2px 5px rgba(7, 26, 196, 0.3);
+        }
+
+        #countdown {
+            font-size:22px;
+            font-weight:600;
+            color:#fff;
+            background:rgba(0,0,0,0.3);
+            padding:10px 25px;
+            border-radius:10px;
+            margin-top:10px;
+        }
+
+        @media (max-width:768px) {
+            .hero { margin-top:100px; padding:15px; }
+            .hero .names { font-size:48px; }
+            .hero .tagline { font-size:16px; }
+            #countdown { font-size:16px; padding:8px 15px; }
+        }
+
+        /* ---------------- STORY ---------------- */
+        section { padding:80px 40px; text-align:center; }
+        h2 {
+            font-size:36px;
+            font-family:'Great Vibes', cursive;
+            color:#ec2366;
+            margin-bottom:30px;
+        }
+        .timeline {
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+            max-width:700px;
+            margin:auto;
+        }
+        .step {
+            padding:20px;
+            background:#fff;
+            border-left:5px solid #B76E79;
+            border-radius:12px;
+            font-size:17px;
+            opacity:0;
+            transform:translateY(40px);
+            transition:0.8s ease-out;
+        }
+        .show { opacity:1; transform:translateY(0); }
+
+        @media (max-width:768px) {
+            section { padding:50px 20px; }
+            h2 { font-size:28px; }
+            .step { padding:15px; font-size:15px; }
+        }
+
+        /* ---------------- GALLERY ---------------- */
+        .gallery-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+            gap:20px;
+            max-width:950px;
+            margin:auto;
+        }
+        .gallery-grid img {
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:15px;
+            transition:0.4s;
+        }
+        .gallery-grid img:hover { transform:scale(1.05); }
+
+        @media (max-width:768px) {
+            .gallery-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+            .gallery-grid img { height:200px; }
+        }
+
+        /* ---------------- DETAILS ---------------- */
+        .details-card {
+            max-width:750px;
+            margin:auto;
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 25px rgba(0,0,0,0.1);
+            font-size:18px;
+            line-height:30px;
+        }
+
+        .calendar-btn, .wishes-btn {
+            margin-top:25px;
+            padding:12px 20px;
+            background:#B76E79;
+            color:#fff;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+            margin-right:10px;
+        }
+
+        .calendar-btn:hover, .wishes-btn:hover {
+            background:#9d5a62;
+            transform:scale(1.05);
+            transition:0.3s;
+        }
+
+        /* Calendar Popup */
+        #calendar-popup { margin-top:15px; display:none; }
+        #calendar-popup button {
+            margin:5px;
+            padding:10px 15px;
+            border:none;
+            background:#4b2a2a;
+            color:#fff;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        /* PhonePe Wishes Section */
+        .phonpe-wishes {
+            margin-top:30px;
+            padding:0;
+            background:#fff;
+            border-radius:12px;
+            border:2px solid #B76E79;
+            overflow:hidden;
+        }
+
+        .wishes-tabs {
+            display:flex;
+            gap:0;
+            border-bottom:2px solid #f0f0f0;
+        }
+
+        .wishes-tab-btn {
+            flex:1;
+            padding:15px 20px;
+            background:#f9f9f9;
+            border:none;
+            color:#333;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:600;
+            transition:0.3s;
+            border-bottom:3px solid transparent;
+        }
+
+        .wishes-tab-btn.active {
+            background:#fff;
+            color:#B76E79;
+            border-bottom-color:#B76E79;
+        }
+
+        .wishes-tab-btn:hover {
+            background:#fff;
+            color:#B76E79;
+        }
+
+        .wishes-tab-content {
+            display:none;
+            padding:25px;
+            text-align:center;
+        }
+
+        .wishes-tab-content.active {
+            display:block;
+        }
+
+        .wishes-tab-content p {
+            margin:15px 0;
+            color:#666;
+            font-size:15px;
+        }
+
+        .wishes-tab-content img {
+            max-width:100%;
+            height:auto;
+            margin:15px 0;
+            border-radius:10px;
+            max-height:300px;
+        }
+
+        .phonpe-wishes h3 {
+            color:#B76E79;
+            margin-bottom:15px;
+            font-size:20px;
+        }
+
+        .phonpe-wishes-btn {
+            background:linear-gradient(135deg, #6A00D4 0%, #5E00BE 100%);
+            color:#fff;
+            padding:14px 28px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:600;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        .phonpe-wishes-btn:hover {
+            transform:scale(1.08);
+            box-shadow:0 5px 20px rgba(106,0,212,0.4);
+        }
+
+        /* ---------------- CONTACT SECTION ---------------- */
+        .contact-section {
+            max-width:750px;
+            margin:auto;
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:25px;
+            margin-top:20px;
+        }
+
+        .contact-card {
+            background:#f9f9f9;
+            padding:20px;
+            border-radius:10px;
+            border-left:4px solid #B76E79;
+        }
+
+        .contact-card h4 { color:#B76E79; font-size:18px; margin-bottom:10px; }
+        .contact-card p { color:#666; font-size:15px; line-height:24px; }
+        .contact-card a { color:#B76E79; text-decoration:none; font-weight:600; transition:0.3s; }
+        .contact-card a:hover { text-decoration:underline; }
+
+        @media (max-width:768px) {
+            .contact-info { grid-template-columns:1fr; gap:15px; }
+            .contact-section { padding:20px; }
+        }
+
+        /* ---------------- FOOTER ---------------- */
+        footer {
+            padding:25px;
+            text-align:center;
+            background:#B76E79;
+            color:#fff;
+            margin-top:60px;
+            font-size:16px;
+        }
+
+        @media (max-width:768px) {
+            footer { padding:18px; font-size:14px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------------- HEADER ---------------- -->
+    <header>
+        <h3>Celebrating Love</h3>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#venue">Venue</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#details" onclick="openPhonePe(); return false;">Wishes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ---------------- HERO ---------------- -->
+    <section class="hero" id="hero">
+        <h1 class="names">Vaishnavi & Shivam</h1>
+        <p class="tagline">Two Hearts, One Forever.</p>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- ---------------- OUR STORY ---------------- -->
+    <section id="story">
+        <h2>Our Story</h2>
+        <div class="timeline">
+            <div class="step reveal">✨ The day our paths crossed was the beginning of a forever we didn't even know we were searching for.</div>
+            <div class="step reveal">💖 Our first date was filled with laughter, long conversations, and a feeling of home.</div>
+            <div class="step reveal">💍 Under the soft glow of twilight, a promise for forever was made.</div>
+        </div>
+    </section>
+
+    <!-- ---------------- GALLERY ---------------- -->
+    <section id="gallery">
+        <h2>Our Moments</h2>
+        <div class="gallery-grid">
+            <img src="1stpht.jpeg" alt="Wedding Moment 1" />
+            <img src="2ndpht.jpeg" alt="Wedding Moment 2" />
+            <img src="3rdpht.jpeg" alt="Wedding Moment 3" />
+            <img src="4thpht.jpeg" alt="Wedding Moment 4" />
+        </div>
+    </section>
+
+    <!-- ---------------- DETAILS ---------------- -->
+    <section id="details">
+        <h2>Wedding Details</h2>
+        <div class="details-card">
+            <p><b>💚 Mehndi:</b> February 20, 2026</p>
+            <p><b>💛 Haldi:</b> February 21, 2026</p>
+            <p><b>💖 Wedding:</b> February 22, 2026</p>
+            <p><b>📍 Venue:</b> Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra</p>
+
+            <button class="calendar-btn" onclick="showCalendarOptions()">Add to Calendar</button>
+
+            <div id="calendar-popup">
+                <button onclick="addGoogleCalendar()">Google Calendar</button>
+                <button onclick="downloadICS()">Download .ICS</button>
+            </div>
+
+            <div class="phonpe-wishes">
+                <div class="wishes-tabs">
+                    <button class="wishes-tab-btn active" onclick="switchTab(event, 'tab-phonepay')">💜 PhonePay Link</button>
+                    <button class="wishes-tab-btn" onclick="switchTab(event, 'tab-scanner')">📱 PhonePay Scanner</button>
+                </div>
+                <div id="tab-phonepay" class="wishes-tab-content active">
+                    <h3>Send Your Wishes via PhonePay</h3>
+                    <p>Click the button below to send your blessings</p>
+                    <button class="phonpe-wishes-btn" onclick="openPhonePe()">💜 Send via PhonePe</button>
+                </div>
+                <div id="tab-scanner" class="wishes-tab-content">
+                    <h3>Scan to Send Your Wishes</h3>
+                    <p>Use any UPI app to scan this QR code</p>
+                    <img src="phonepay.jpeg" alt="PhonePe QR Code" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------- VENUE BUTTON ---------------- -->
+    <section id="venue">
+        <h2>Venue Location</h2>
+        <div class="details-card" style="text-align:center;">
+            <p><b>📍 Venue:</b> Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra</p>
+            <p><b>📮 Address:</b> High School Road, Tal Chandwad, Dist, Manmad Rd, Dugaon, Maharashtra 423104</p>
+            <button onclick="window.open('https://www.google.com/maps/place/Aashirwad+Lawns+%26+Mangal+Karayalay+Dugaon,+High+School+Road,+Tal+Chandwad,+Dist,+Manmad+Rd,+Dugaon,+Maharashtra+423104', '_blank')" 
+                style="margin-top:15px; padding:12px 20px; background:#B76E79; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:16px;">
+                📍 Go to Location
+            </button>
+        </div>
+    </section>
+
+    <!-- ---------------- CONTACT INFORMATION ---------------- -->
+    <section>
+        <h2>Get in Touch</h2>
+        <div class="contact-section">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h4>💌 Bride - Vaishnavi Sonawane</h4>
+                    <p><a href="tel:+919730875197">📞 +91 97308 75197</a></p>
+                </div>
+                <div class="contact-card">
+                    <h4>💌 Groom - Shivam Shelar</h4>
+                    <p><a href="tel:+919975075197">📞 +91 99750 75197</a></p>
+                </div>
+                <div class="contact-card">
+                    <h4>🎂 Event Coordinator - Anil Shewale</h4>
+                    <p><a href="tel:+918329626248">📞 +91 83296 26248</a></p>
+                </div>
+                <div class="contact-card">
+                    <h4>👪 Parents</h4>
+                    <p>
+                        <b>Vaishnavi's Parent:</b> Sanjay Sonawane - <a href="tel:+919767372894">📞 9767372894</a><br>
+                        <b>Shivam's Parent:</b> Bhausaheb Shelar - <a href="tel:+919422569497">📞 9422569497</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------- FOOTER ---------------- -->
+    <footer>
+      ❤️ Thank you From Sonawane Family ❤️
+    </footer>
+
+    <!-- ---------------- JAVASCRIPT ---------------- -->
+    <script>
+        /* COUNTDOWN TIMER */
+        function startCountdown() {
+            const weddingDate = new Date("2026-02-22T18:30:00").getTime();
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = weddingDate - now;
+
+                const d = Math.floor(diff / (1000*60*60*24));
+                const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+                const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+                const s = Math.floor((diff % (1000*60)) / 1000);
+
+                document.getElementById("countdown").innerHTML =
+                `${d}d : ${h}h : ${m}m : ${s}s`;
+            }, 1000);
+        }
+        startCountdown();
+
+        /* REVEAL SCROLL ANIMATION */
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("show"); } });
+        });
+        reveals.forEach(el => observer.observe(el));
+
+        /* ADD TO CALENDAR */
+        function showCalendarOptions() {
+            const popup = document.getElementById("calendar-popup");
+            popup.style.display = popup.style.display === "block" ? "none" : "block";
+        }
+        function addGoogleCalendar() {
+            const gcLink = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+            "&text=Wedding+Celebration" +
+            "&dates=20260222T130000Z/20260222T170000Z" +
+            "&location=Aashirwad+Lawns+%26+Mangal+Karayalay+Dugaon+Maharashtra" +
+            "&details=Join+us+on+our+special+day.";
+            window.open(gcLink, "_blank");
+        }
+        function downloadICS() {
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Wedding Celebration
+DTSTART:20260222T130000Z
+DTEND:20260222T170000Z
+LOCATION:Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra
+END:VEVENT
+END:VCALENDAR`;
+            const blob = new Blob([icsContent], { type:"text/calendar" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "wedding.ics";
+            link.click();
+        }
+
+        /* PHONEPE WISHES */
+        function openPhonePe() {
+            const upiID = "9322019318-2@ibl";
+            const receiverName = "Vaishnavi & Shivam";
+            const txnRef = "WEDDING" + Date.now();
+            const description = "Wedding Wishes";
+            const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(receiverName)}&tr=${txnRef}&tn=${encodeURIComponent(description)}`;
+            window.location.href = upiLink;
+            setTimeout(() => {
+                alert("📲 PhonePe will open on your phone.\n\nIf it doesn't open, please:\n1. Open PhonePe app\n2. Go to Send Money\n3. Enter UPI: " + upiID + "\n\nThank you for your wishes! ❤️");
+            }, 500);
+        }
+
+        /* WISHES TAB SWITCHER */
+        function switchTab(event, tabName) {
+            const contents = document.querySelectorAll('.wishes-tab-content');
+            const buttons = document.querySelectorAll('.wishes-tab-btn');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
