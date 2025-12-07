@@ -9,6 +9,15 @@ body {
     overflow-x:hidden;
 }
 
+/* ---------------- UNIVERSAL SCROLL REVEAL EFFECT ---------------- */
+.reveal {
+    opacity:0;
+    transform:translateY(40px);
+    transition: all 0.8s ease-out; /* Apply to all elements with this class */
+}
+.show { opacity:1; transform:translateY(0); }
+/* End of Reveal Effect */
+
 /* ---------------- HEADER ---------------- */
 header {
     position:fixed;
@@ -44,14 +53,36 @@ nav a:hover { color:#B76E79; }
 @media (max-width:768px) {
     header { padding:12px 20px; flex-direction:column; gap:12px; }
     header h3 { font-size:24px; }
-    nav ul { gap:15px; flex-wrap:wrap; justify-content:center; }
+    
+    /* FIX: Make the navigation horizontally scrollable on small screens and hide the scrollbar */
+    header nav {
+        width: 100%;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch; 
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    /* HIDE SCROLLBAR FOR WEB KIT BROWSERS (Chrome, Safari) */
+    header nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav ul { 
+        gap:15px; 
+        flex-wrap: nowrap; /* Prevents wrapping onto multiple lines */
+        justify-content: flex-start; /* Aligns links to the start */
+        min-width: 450px; /* Ensures enough width for the single-row layout */
+    }
+
     nav a { font-size:14px; }
 }
 
 /* ---------------- HERO ---------------- */
 .hero {
     height:100vh;
-    background:url('vsbackground.jpeg') center/cover fixed;
+    /* FIX: Background scrolls normally on mobile */
+    background:url('vsbackground.jpeg') center/cover scroll; 
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -69,7 +100,7 @@ nav a:hover { color:#B76E79; }
     left:0;
     right:0;
     bottom:0;
-    background:rgba(255, 255, 255, 0.226);
+    background:rgba(216, 176, 226, 0.164);
     backdrop-filter:blur(8px);
     z-index:1;
 }
@@ -82,9 +113,9 @@ nav a:hover { color:#B76E79; }
 .hero .names {
     font-family:'Great Vibes', cursive;
     font-size:70px;
-    color:#0d101b;
+    color:#000000;
     margin-bottom:10px;
-    text-shadow:2px 2px 8px rgba(174, 0, 255, 0.3);
+    text-shadow:2px 2px 8px rgba(0, 174, 255, 0.3);
 }
 
 .hero .tagline {
@@ -112,6 +143,57 @@ nav a:hover { color:#B76E79; }
     #countdown { font-size:16px; padding:8px 15px; }
 }
 
+/* ---------------- NEW SECTION: INVITATION BY ---------------- */
+#invitation-by {
+    padding: 50px 40px; 
+    text-align: center;
+    background: #FAF3E0; 
+}
+
+/* Box styling for invitation names */
+.invitation-card {
+    max-width: 750px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+    border: 2px solid #B76E79; 
+}
+
+.inviters-list {
+    max-width: 600px;
+    margin: 20px auto;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* UPDATED COLOR for names in "An Invitation From" section */
+.inviters-list strong {
+    color: #8d0ab4; /* Smooth Dark Purple */
+    font-weight: 600;
+    font-size: 24px;
+    display: block; 
+}
+
+.inviters-list p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.request-text {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width:768px) {
+    #invitation-by { padding: 40px 20px; }
+    .inviters-list strong { font-size: 20px; }
+    .inviters-list p { font-size: 16px; }
+}
+
 /* ---------------- STORY ---------------- */
 section { padding:80px 40px; text-align:center; }
 h2 {
@@ -133,11 +215,7 @@ h2 {
     border-left:5px solid #B76E79;
     border-radius:12px;
     font-size:17px;
-    opacity:0;
-    transform:translateY(40px);
-    transition:0.8s ease-out;
 }
-.show { opacity:1; transform:translateY(0); }
 
 @media (max-width:768px) {
     section { padding:50px 20px; }
@@ -159,8 +237,14 @@ h2 {
     object-fit:cover;
     border-radius:15px;
     transition:0.4s;
+    /* ADDED: Small glow effect on photos */
+    box-shadow: 0 0 8px rgba(112, 35, 236, 0.301); 
 }
-.gallery-grid img:hover { transform:scale(1.05); }
+.gallery-grid img:hover { 
+    transform:scale(1.05); 
+    /* Enhanced glow on hover */
+    box-shadow: 0 0 15px rgba(129, 35, 236, 0.397); 
+}
 
 @media (max-width:768px) {
     .gallery-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
@@ -179,34 +263,28 @@ h2 {
     line-height:30px;
 }
 
+/* 💖 BUTTON STYLE 💖 */
 .calendar-btn, .wishes-btn {
     margin-top:25px;
-    padding:12px 20px;
-    background:#B76E79;
+    padding:14px 25px;
+    background: linear-gradient(45deg, #B76E79, #ec2366);
     color:#fff;
     border:none;
-    border-radius:10px;
+    border-radius:30px; 
     cursor:pointer;
-    font-size:16px;
+    font-size:17px;
+    font-weight:700;
+    text-transform:uppercase; 
+    letter-spacing:1px;
+    box-shadow:0 6px 20px rgba(183, 110, 121, 0.4); 
+    transition: all 0.3s ease;
     margin-right:10px;
 }
 
 .calendar-btn:hover, .wishes-btn:hover {
-    background:#9d5a62;
-    transform:scale(1.05);
-    transition:0.3s;
-}
-
-/* Calendar Popup */
-#calendar-popup { margin-top:15px; display:none; }
-#calendar-popup button {
-    margin:5px;
-    padding:10px 15px;
-    border:none;
-    background:#4b2a2a;
-    color:#fff;
-    border-radius:8px;
-    cursor:pointer;
+    background: linear-gradient(45deg, #ec2366, #B76E79);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:0 10px 30px rgba(183, 110, 121, 0.6);
 }
 
 /* PhonePe Wishes Section */
@@ -215,7 +293,7 @@ h2 {
     padding:0;
     background:#fff;
     border-radius:12px;
-    border:2px solid #B76E79;
+    border:2px solid #c26e7b;
     overflow:hidden;
 }
 
@@ -246,7 +324,7 @@ h2 {
 
 .wishes-tab-btn:hover {
     background:#fff;
-    color:#B76E79;
+    color:#b86a76;
 }
 
 .wishes-tab-content {
@@ -261,7 +339,7 @@ h2 {
 
 .wishes-tab-content p {
     margin:15px 0;
-    color:#666;
+    color:#757575;
     font-size:15px;
 }
 
@@ -274,30 +352,32 @@ h2 {
 }
 
 .phonpe-wishes h3 {
-    color:#B76E79;
+    color:#c55263;
     margin-bottom:15px;
     font-size:20px;
 }
 
 .phonpe-wishes-btn {
-    background:linear-gradient(135deg, #6A00D4 0%, #5E00BE 100%);
+    background:linear-gradient(135deg, #6b05d1 0%, #5E00BE 100%);
     color:#fff;
     padding:14px 28px;
     border:none;
-    border-radius:10px;
+    border-radius:30px; 
     cursor:pointer;
-    font-size:16px;
-    font-weight:600;
+    font-size:17px; 
+    font-weight:700; 
+    text-transform:uppercase; 
     display:inline-flex;
     align-items:center;
     gap:8px;
     transition:0.3s;
     margin-top:10px;
+    box-shadow:0 6px 20px rgba(104, 3, 206, 0.4); 
 }
 
 .phonpe-wishes-btn:hover {
-    transform:scale(1.08);
-    box-shadow:0 5px 20px rgba(106,0,212,0.4);
+    transform: translateY(-2px) scale(1.02); 
+    box-shadow:0 10px 30px rgba(104, 4, 204, 0.6); 
 }
 
 /* ---------------- CONTACT SECTION ---------------- */
@@ -324,9 +404,27 @@ h2 {
     border-left:4px solid #B76E79;
 }
 
-.contact-card h4 { color:#B76E79; font-size:18px; margin-bottom:10px; }
-.contact-card p { color:#666; font-size:15px; line-height:24px; }
-.contact-card a { color:#B76E79; text-decoration:none; font-weight:600; transition:0.3s; }
+/* Contact Role/Title (e.g., Bride -) remains dark */
+.contact-card h4 { 
+    color:#333; 
+    font-size:18px; 
+    margin-bottom:10px; 
+}
+
+/* Highlight color for the names in "Get in Touch" */
+.contact-name-highlight {
+    color: #6A5ACD; /* Smooth Dark Purple */
+    font-weight: 600;
+}
+.contact-card p { color:#000000; font-size:15px; line-height:24px; }
+
+/* Mobile Number Color (Smooth Blue) */
+.contact-card a { 
+    color:#4A90E2; 
+    text-decoration:none; 
+    font-weight:600; 
+    transition:0.3s; 
+}
 .contact-card a:hover { text-decoration:underline; }
 
 @media (max-width:768px) {
@@ -338,7 +436,7 @@ h2 {
 footer {
     padding:25px;
     text-align:center;
-    background:#B76E79;
+    background:#a54fbb;
     color:#fff;
     margin-top:60px;
     font-size:16px;
