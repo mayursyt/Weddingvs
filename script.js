@@ -1,6 +1,7 @@
 /* COUNTDOWN TIMER */
 function startCountdown() {
-    const weddingDate = new Date("2026-02-22T18:30:00").getTime();
+    // UPDATED TARGET DATE: February 21, 2026, 12 PM
+    const weddingDate = new Date("2026-02-21T12:00:00").getTime();
 
     setInterval(() => {
         const now = new Date().getTime();
@@ -11,8 +12,9 @@ function startCountdown() {
         const m = Math.floor((diff % (1000*60*60)) / (1000*60));
         const s = Math.floor((diff % (1000*60)) / 1000);
 
+        // UPDATED FORMAT: D : H : M : S
         document.getElementById("countdown").innerHTML =
-        `${d}d : ${h}h : ${m}m : ${s}s`;
+        `${d}D : ${h}H : ${m}M : ${s}S`;
     }, 1000);
 }
 startCountdown();
@@ -21,14 +23,14 @@ startCountdown();
 const reveals = document.querySelectorAll(".reveal");
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("show"); } });
+}, {
+    threshold: 0.1
 });
 reveals.forEach(el => observer.observe(el));
 
 /* ADD TO CALENDAR */
-function showCalendarOptions() {
-    const popup = document.getElementById("calendar-popup");
-    popup.style.display = popup.style.display === "block" ? "none" : "block";
-}
+
+// Simplified function to open Google Calendar directly
 function addGoogleCalendar() {
     const gcLink = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=Wedding+Celebration" +
@@ -37,33 +39,21 @@ function addGoogleCalendar() {
     "&details=Join+us+on+our+special+day.";
     window.open(gcLink, "_blank");
 }
-function downloadICS() {
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:Wedding Celebration
-DTSTART:20260222T130000Z
-DTEND:20260222T170000Z
-LOCATION:Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra
-END:VEVENT
-END:VCALENDAR`;
-    const blob = new Blob([icsContent], { type:"text/calendar" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "wedding.ics";
-    link.click();
-}
 
 /* PHONEPE WISHES */
 function openPhonePe() {
-    const upiID = "9322019318-2@ibl";
+    // UPI ID retained
+    const upiID = "9767372894@ybl";
     const receiverName = "Vaishnavi & Shivam";
     const txnRef = "WEDDING" + Date.now();
     const description = "Wedding Wishes";
-    const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(receiverName)}&tr=${txnRef}&tn=${encodeURIComponent(description)}`;
+    
+    // FIX: Added &cu=INR (Currency Code) for security compliance
+    const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(receiverName)}&tr=${txnRef}&tn=${encodeURIComponent(description)}&cu=INR`;
+    
     window.location.href = upiLink;
     setTimeout(() => {
-        alert("📲 PhonePe will open on your phone.\n\nIf it doesn't open, please:\n1. Open PhonePe app\n2. Go to Send Money\n3. Enter UPI: " + upiID + "\n\nThank you for your wishes! ❤️");
+        alert("📲 The UPI app installed on your phone will open to send wishes.\n\nIf it doesn't open, please:\n1. Open your UPI app (like PhonePe/Google Pay)\n2. Go to Send Money\n3. Enter UPI: " + upiID + "\n\nThank you for your wishes! ❤️");
     }, 500);
 }
 
