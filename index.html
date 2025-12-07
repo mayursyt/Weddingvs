@@ -21,7 +21,7 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#venue">Venue</a></li>
                 <li><a href="#details">Details</a></li>
-                <li><a href="#details" onclick="openPhonePe(); return false;">Wishes</a></li>
+                <li><a href="#details">Wishes</a></li> 
             </ul>
         </nav>
     </header>
@@ -76,19 +76,10 @@
             <button class="calendar-btn" onclick="addGoogleCalendar()">Add to Google Calendar</button>
 
             <div class="phonpe-wishes">
-                <div class="wishes-tabs">
-                    <button class="wishes-tab-btn active" onclick="switchTab(event, 'tab-phonepay')">💜 PhonePay Link</button>
-                    <button class="wishes-tab-btn" onclick="switchTab(event, 'tab-scanner')">📱 PhonePay Scanner</button>
-                </div>
-                <div id="tab-phonepay" class="wishes-tab-content active">
-                    <h3>Send Your Wishes via PhonePay</h3>
-                    <p>Click the button below to send your blessings</p>
-                    <button class="phonpe-wishes-btn" onclick="openPhonePe()">💜 Send via PhonePay</button>
-                </div>
-                <div id="tab-scanner" class="wishes-tab-content">
+                <div id="tab-scanner" class="wishes-tab-content active" style="padding-top: 30px;">
                     <h3>Scan to Send Your Wishes</h3>
                     <p>Use any UPI app to scan this QR code</p>
-                    <img src="phonepay.jpeg" alt="PhonePay QR Code" />
+                    <img src="phonepay.jpeg" alt="PhonePe QR Code" />
                 </div>
             </div>
         </div>
