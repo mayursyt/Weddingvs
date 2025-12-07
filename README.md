@@ -96,5 +96,4 @@ Thank you for being a part of our journey.
 
 ---
 
-With Love,  
-👰 **Vaishnavi** & 🤵 **Shivam**
+**❤️ Love From Sonawane Family ❤️**  
