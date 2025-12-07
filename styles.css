@@ -298,7 +298,7 @@ h2 {
 }
 
 .wishes-tabs {
-    display:flex;
+    display:none; /* Hide the tabs container completely as requested */
     gap:0;
     border-bottom:2px solid #f0f0f0;
 }
