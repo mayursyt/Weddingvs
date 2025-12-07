@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wedding Invitation</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- ---------------- HEADER ---------------- -->
     <header>
         <h3>Celebrating Love</h3>
         <nav>
@@ -29,16 +26,28 @@
         </nav>
     </header>
 
-    <!-- ---------------- HERO ---------------- -->
     <section class="hero" id="hero">
         <h1 class="names">Vaishnavi & Shivam</h1>
         <p class="tagline">Two Hearts, One Forever.</p>
         <div id="countdown"></div>
     </section>
 
-    <!-- ---------------- OUR STORY ---------------- -->
+    <section id="invitation-by">
+        <h2 class="reveal">An Invitation From</h2>
+        <div class="invitation-card reveal">
+            <div class="inviters-list">
+                <p><strong>Mr. Sanjay Sukdev Sonawane</strong></p>
+                <p><strong>Mrs. Surekha Sanjay Sonawane</strong></p>
+                <p><strong>Mr. Nimba Sukdev Sonawane</strong></p>
+                <p><strong>Mrs. Bharti Nimba Sonawane</strong></p>
+                <p><strong>Mr. Mayur Sanjay Sonawane</strong></p>
+            </div>
+            <p class="request-text">...And All Family Members request the honor of your presence.</p>
+        </div>
+    </section>
+
     <section id="story">
-        <h2>Our Story</h2>
+        <h2 class="reveal">Our Story</h2>
         <div class="timeline">
             <div class="step reveal">✨ The day our paths crossed was the beginning of a forever we didn't even know we were searching for.</div>
             <div class="step reveal">💖 Our first date was filled with laughter, long conversations, and a feeling of home.</div>
@@ -46,10 +55,9 @@
         </div>
     </section>
 
-    <!-- ---------------- GALLERY ---------------- -->
     <section id="gallery">
-        <h2>Our Moments</h2>
-        <div class="gallery-grid">
+        <h2 class="reveal">Our Moments</h2>
+        <div class="gallery-grid reveal">
             <img src="1stpht.jpeg" alt="Wedding Moment 1" />
             <img src="2ndpht.jpeg" alt="Wedding Moment 2" />
             <img src="3rdpht.jpeg" alt="Wedding Moment 3" />
@@ -57,21 +65,15 @@
         </div>
     </section>
 
-    <!-- ---------------- DETAILS ---------------- -->
     <section id="details">
-        <h2>Wedding Details</h2>
-        <div class="details-card">
+        <h2 class="reveal">Wedding Details</h2>
+        <div class="details-card reveal">
             <p><b>💚 Mehndi:</b> February 20, 2026</p>
             <p><b>💛 Haldi:</b> February 21, 2026</p>
             <p><b>💖 Wedding:</b> February 22, 2026</p>
             <p><b>📍 Venue:</b> Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra</p>
 
-            <button class="calendar-btn" onclick="showCalendarOptions()">Add to Calendar</button>
-
-            <div id="calendar-popup">
-                <button onclick="addGoogleCalendar()">Google Calendar</button>
-                <button onclick="downloadICS()">Download .ICS</button>
-            </div>
+            <button class="calendar-btn" onclick="addGoogleCalendar()">Add to Google Calendar</button>
 
             <div class="phonpe-wishes">
                 <div class="wishes-tabs">
@@ -92,53 +94,48 @@
         </div>
     </section>
 
-    <!-- ---------------- VENUE BUTTON ---------------- -->
     <section id="venue">
-        <h2>Venue Location</h2>
-        <div class="details-card" style="text-align:center;">
+        <h2 class="reveal">Venue Location</h2>
+        <div class="details-card reveal" style="text-align:center;">
             <p><b>📍 Venue:</b> Aashirwad Lawns & Mangal Karayalay, Dugaon, Maharashtra</p>
             <p><b>📮 Address:</b> High School Road, Tal Chandwad, Dist, Manmad Rd, Dugaon, Maharashtra 423104</p>
-            <button onclick="window.open('https://www.google.com/maps/place/Aashirwad+Lawns+%26+Mangal+Karayalay+Dugaon,+High+School+Road,+Tal+Chandwad,+Dist,+Manmad+Rd,+Dugaon,+Maharashtra+423104', '_blank')" 
-                style="margin-top:15px; padding:12px 20px; background:#B76E79; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:16px;">
+            <button class="calendar-btn" onclick="window.open('https://maps.app.goo.gl/A3xd7HMc8A3KwokK8?g_st=ac', '_blank')">
                 📍 Go to Location
             </button>
         </div>
     </section>
 
-    <!-- ---------------- CONTACT INFORMATION ---------------- -->
     <section>
-        <h2>Get in Touch</h2>
-        <div class="contact-section">
+        <h2 class="reveal">Get in Touch</h2>
+        <div class="contact-section reveal">
             <div class="contact-info">
                 <div class="contact-card">
-                    <h4>💌 Bride - Vaishnavi Sonawane</h4>
+                    <h4>💌 Bride - <span class="contact-name-highlight">Vaishnavi Sonawane</span></h4>
                     <p><a href="tel:+919730875197">📞 +91 97308 75197</a></p>
                 </div>
                 <div class="contact-card">
-                    <h4>💌 Groom - Shivam Shelar</h4>
+                    <h4>💌 Groom - <span class="contact-name-highlight">Shivam Shelar</span></h4>
                     <p><a href="tel:+919975075197">📞 +91 99750 75197</a></p>
                 </div>
                 <div class="contact-card">
-                    <h4>🎂 Event Coordinator - Anil Shewale</h4>
+                    <h4>🎂 Event Coordinator - <span class="contact-name-highlight">Anil Shewale</span></h4>
                     <p><a href="tel:+918329626248">📞 +91 83296 26248</a></p>
                 </div>
                 <div class="contact-card">
                     <h4>👪 Parents</h4>
                     <p>
-                        <b>Vaishnavi's Parent:</b> Sanjay Sonawane - <a href="tel:+919767372894">📞 9767372894</a><br>
-                        <b>Shivam's Parent:</b> Bhausaheb Shelar - <a href="tel:+919422569497">📞 9422569497</a>
+                        <b>Vaishnavi's Parent:</b> <span class="contact-name-highlight">Sanjay Sonawane</span> - <a href="tel:+919767372894">📞 9767372894</a><br>
+                        <b>Shivam's Parent:</b> <span class="contact-name-highlight">Bhausaheb Shelar</span> - <a href="tel:+919422569497">📞 9422569497</a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ---------------- FOOTER ---------------- -->
     <footer>
       ❤️ Thank you From Sonawane Family ❤️
     </footer>
 
-    <!-- JS -->
     <script src="script.js"></script>
 </body>
 </html>
