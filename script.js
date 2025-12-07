@@ -1,6 +1,6 @@
 /* COUNTDOWN TIMER */
 function startCountdown() {
-    // UPDATED TARGET DATE: February 21, 2026, 12 PM
+    // 1. UPDATED DATE/TIME: February 21, 2026 at 12 PM (noon)
     const weddingDate = new Date("2026-02-21T12:00:00").getTime();
 
     setInterval(() => {
@@ -12,7 +12,7 @@ function startCountdown() {
         const m = Math.floor((diff % (1000*60*60)) / (1000*60));
         const s = Math.floor((diff % (1000*60)) / 1000);
 
-        // UPDATED FORMAT: D : H : M : S
+        // 2. UPDATED FORMAT: D : H : M : S
         document.getElementById("countdown").innerHTML =
         `${d}D : ${h}H : ${m}M : ${s}S`;
     }, 1000);
@@ -30,7 +30,7 @@ reveals.forEach(el => observer.observe(el));
 
 /* ADD TO CALENDAR */
 
-// Simplified function to open Google Calendar directly
+// Function to open Google Calendar directly (simplifies the button in index.html)
 function addGoogleCalendar() {
     const gcLink = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=Wedding+Celebration" +
@@ -42,7 +42,7 @@ function addGoogleCalendar() {
 
 /* PHONEPE WISHES */
 function openPhonePe() {
-    // UPI ID retained
+    // UPI ID (Consistent with contact details)
     const upiID = "9767372894@ybl";
     const receiverName = "Vaishnavi & Shivam";
     const txnRef = "WEDDING" + Date.now();
