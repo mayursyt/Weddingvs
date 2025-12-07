@@ -39,32 +39,3 @@ function addGoogleCalendar() {
     "&details=Join+us+on+our+special+day.";
     window.open(gcLink, "_blank");
 }
-
-/* PHONEPE WISHES */
-function openPhonePe() {
-    // UPI ID (Consistent with contact details)
-    const upiID = "9767372894@ybl";
-    const receiverName = "Vaishnavi & Shivam";
-    const txnRef = "WEDDING" + Date.now();
-    const description = "Wedding Wishes";
-    
-    // FIX: Added &cu=INR (Currency Code) for security compliance
-    const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(receiverName)}&tr=${txnRef}&tn=${encodeURIComponent(description)}&cu=INR`;
-    
-    window.location.href = upiLink;
-    setTimeout(() => {
-        alert("📲 The UPI app installed on your phone will open to send wishes.\n\nIf it doesn't open, please:\n1. Open your UPI app (like PhonePe/Google Pay)\n2. Go to Send Money\n3. Enter UPI: " + upiID + "\n\nThank you for your wishes! ❤️");
-    }, 500);
-}
-
-/* WISHES TAB SWITCHER */
-function switchTab(event, tabName) {
-    const contents = document.querySelectorAll('.wishes-tab-content');
-    const buttons = document.querySelectorAll('.wishes-tab-btn');
-    
-    contents.forEach(content => content.classList.remove('active'));
-    buttons.forEach(button => button.classList.remove('active'));
-    
-    document.getElementById(tabName).classList.add('active');
-    event.target.classList.add('active');
-}
