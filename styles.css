@@ -251,6 +251,72 @@ h2 {
     .gallery-grid img { height:200px; }
 }
 
+/* ---------------- NEW SECTION: PHOTO DOWNLOAD ---------------- */
+#download-photos {
+    padding: 30px 40px; 
+    /* CHANGED: Set to main page background color for consistency */
+    background: #FAF3E0; 
+    text-align: center;
+}
+
+.download-card {
+    /* Inherits from .details-card base styling */
+    padding: 25px;
+    border: 2px solid #6A5ACD; /* Border using the secondary purple highlight */
+    background: #ffffff;
+    max-width: 750px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+#download-photos h2 {
+    color:#ec2366; /* Title using the purple highlight */
+}
+
+#download-photos h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.download-btn {
+    /* Custom button style based on secondary color (Purple Gradient) */
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 14px 30px;
+    background: linear-gradient(45deg, #6A5ACD, #8d0ab4); /* Using the purple highlight color */
+    color: #fff;
+    border: none;
+    border-radius: 30px; 
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(106, 90, 205, 0.4); 
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: linear-gradient(45deg, #8d0ab4, #6A5ACD);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(106, 90, 205, 0.6);
+}
+
+.small-text {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+}
+
+@media (max-width:768px) {
+    #download-photos { padding: 30px 20px; }
+    #download-photos h3 { font-size: 20px; }
+    .download-btn { padding: 12px 20px; font-size: 15px; }
+}
+
 /* ---------------- DETAILS ---------------- */
 .details-card {
     max-width:750px;
@@ -263,11 +329,11 @@ h2 {
     line-height:30px;
 }
 
-/* 💖 BUTTON STYLE 💖 */
+/* 💖 BUTTON STYLE 💖 (Pink/Red Gradient) */
 .calendar-btn, .wishes-btn {
     margin-top:25px;
     padding:14px 25px;
-    background: linear-gradient(45deg, #B76E79, #ec2366);
+    background: linear-gradient(45deg, #6A5ACD, #8d0ab4);
     color:#fff;
     border:none;
     border-radius:30px; 
@@ -282,7 +348,7 @@ h2 {
 }
 
 .calendar-btn:hover, .wishes-btn:hover {
-    background: linear-gradient(45deg, #ec2366, #B76E79);
+    background: linear-gradient(45deg, #8d0ab4, #6A5ACD);
     transform: translateY(-2px) scale(1.02);
     box-shadow:0 10px 30px rgba(183, 110, 121, 0.6);
 }
