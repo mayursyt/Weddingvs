@@ -1,6 +1,6 @@
 /* COUNTDOWN TIMER */
 function startCountdown() {
-    // 1. UPDATED DATE/TIME: February 21, 2026 at 12 PM (noon)
+    // 1. UPDATED DATE/TIME: February 22, 2026 at 12 PM (noon)
     const weddingDate = new Date("2026-02-22T12:00:00").getTime();
 
     setInterval(() => {
@@ -39,4 +39,5 @@ function addGoogleCalendar() {
     "&details=Join+us+on+our+special+day.";
     window.open(gcLink, "_blank");
 }
+
 
