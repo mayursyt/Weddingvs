@@ -118,15 +118,6 @@ nav a:hover { color:#B76E79; }
     text-shadow:2px 2px 8px rgba(0, 174, 255, 0.3);
 }
 
-.hero .tagline {
-    font-size:20px;
-    letter-spacing:1px;
-    color:#141414;
-    margin-bottom:20px;
-    text-shadow:0 2px 5px rgba(7, 26, 196, 0.3);
-}
-
-
 @media (max-width:768px) {
     .hero { margin-top:100px; padding:15px; }
     .hero .names { font-size:48px; }
